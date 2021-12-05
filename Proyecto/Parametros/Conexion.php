@@ -1,10 +1,10 @@
 <?php
 
 class Conexion {
-    const HOST = "mysql:host=localhost;port=3307;dbname=organizaciontp";
+    const HOST = "mysql:host=localhost;port=3306;dbname=organizaciontp";
     const USER = "root";
     const PASS = "12345";
-    //const HOST = "mysql:host=127.0.0.1,port=3307;dbname=informaticatp";
+    //const HOST = "mysql:host=127.0.0.1,port=3306;dbname=informaticatp";
 
        
     public $conexion;
