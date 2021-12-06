@@ -312,7 +312,6 @@
             pos = 0
             mayor = ind2[0].cantidadTp
             indice = pos
-            pos++
             for (var dato of ind2) {
                 document.getElementById("indicador2").innerHTML += "<tr><td>" + dato.tipo_pago+ "</td> <td>" 
                 + dato.cantidadTp+"</td></td>";
