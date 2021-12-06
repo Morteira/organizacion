@@ -131,7 +131,7 @@
                 <div class="table-responsive">
                     <p>
                         <b>Indicador N°2:</b>
-                        Método de Pago Preferido por tipo de cliente
+                        Porcentaje de clientes por sexo en una categoria de producto
                     </p>
                     <div class="col-md-6">
                         <input class="form-control" type="text" name="lp" id='lp' value="" list="listaLP" onblur="obtenerCodigo('lp','listaLP','lp_id')" placeholder="seleccione una linea de producto"> <br>
@@ -168,7 +168,7 @@
                 <div class="table-responsive">
                     <p>
                         <b>Indicador N°3:</b>  
-                        Línea de producto más vendida los fin de semana
+                        ganancia de un producto comparando las ventas antes y después de un feriado
                     </p>
                     <div class="col-md-3">
                         <input class="form-control" type="date" name="fecha" id='fecha' value="" placeholder="seleccione una linea de producto"> <br>
@@ -213,7 +213,7 @@
                 <div class="table-responsive">
                     <p>
                         <b>Indicador N°1: </b>
-                        Margen de Beneficio por cada linea de producto
+                        Ganancia de un producto con relación a la cantidad vendida y su total de ganancia
                     </p>
                     <table  class="table table-bordered table-hover table-sm table-striped">
                         <thead class="thead-dark">
