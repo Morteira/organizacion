@@ -1,0 +1,74 @@
+body {
+  background-color: #fff;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.container.tabla {
+  background-color: #fff;
+}
+
+.container.botones {
+  margin-bottom: 2%;
+}
+
+.container-fluid.cabecera {
+  margin-top: 5%;
+  width: 100%;
+  color: #fff;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-bottom: 2%;
+  background-color: #FF9800;
+}
+
+
+.botonCancelar {
+  background-color: #999999;
+  color: #FF9800;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0px;
+}
+
+.botonEliminar {
+  background-color: #333333;
+  color: #FF9800;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0px;
+}
+
+.col {
+  margin-left: 1%;
+  margin-top: 5px;
+}
+
+table {
+ 
+  border: 2px #333333 solid;
+}
+
+.titulo-tabla {
+  color: #FF9800;
+  padding-left: 5px;
+  background-color: #333333;
+  width: 100%;
+}
+
+.datos-tabla {
+  padding-left: 5px;
+  background-color: #fff;
+  color: #000000;
+  width: 100%;
+}
+
+td {
+  padding-left: 10px;
+  border: 1px #333333 solid;
+}
+
+#tCabecera {
+  background-color: #333333;
+  margin: 0px;
+}
+
