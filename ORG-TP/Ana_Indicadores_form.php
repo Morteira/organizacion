@@ -237,6 +237,7 @@
        
         function inicializaaar() {
            indicador1()
+           indicador2()
            
         }
 
@@ -254,7 +255,7 @@
             }
 
            
-            indicador2(res)
+         
             
             
         }
@@ -265,9 +266,9 @@
             actualizarTablaIndicador1(ind1)
         }
 
-        async function indicador2(res){
-            console.log(res)
-            let ind2 = JSON.parse(await $.post("./Parametros/Ana_indicador2.php",{id :res }));
+        async function indicador2(){
+           
+            let ind2 = JSON.parse(await $.post("./Parametros/Ana_indicador2.php"));
             console.log(ind2)
             //actualizarTablaIndicador2(ind2)
         }

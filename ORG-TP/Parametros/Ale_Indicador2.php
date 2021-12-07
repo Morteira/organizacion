@@ -9,9 +9,8 @@
       join tipocliente as tc on v.tipoCliente_id = tc.id
       join tipopago as tp on v.tipoPago_id = tp.id
       group by v.tipoPago_id,v.tipoCliente_id
-      order by v.tipoCliente_id,cantidadTP desc
-    
-    
+      order by v.tipoCliente_id,cantidadTP desc 
+  
  ');
   $valores=$valores->fetchAll(PDO::FETCH_ASSOC);
 

@@ -4,7 +4,15 @@ from ventas v join  ciudad c on v.ciudad_id = c.id
 group by ciudad_id;
 
 -------------------------------------- indicador 2 --------------------------------------------------------
-
+SET @venta := ( SELECT SUM(total) FROM ventas);
+SELECT
+     ciudad as nombre, total,
+     CONCAT( round( ( (total/@venta ) * 100 ) ,2) ,'%')  AS porcentaje
+    FROM ventas v
+    join ciudad c on v.ciudad_id = c.id
+    join tipocliente tc on v.tipoCliente_id = tc.id
+    group by  v.ciudad_id, v.tipoCliente_id
+    ;
 
 -- el primer resultado de cada tipo cliente son la forma preferidos por cada tipo de cliente
 
