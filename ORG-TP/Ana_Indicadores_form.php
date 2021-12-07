@@ -45,7 +45,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    Indicador Carlos
+    Indicador Ana
   </title>
   <link rel="stylesheet" href="<?php echo CARPETA_CSS?>bootstrap/css/bootstrap.css">
   <script src="<?php echo CARPETA_CSS?>bootstrap/js/bootstrap.bundle.js" charset="utf-8"></script>
@@ -120,7 +120,7 @@
     <center>
 
         <div class="container-fluid">
-            <h1>Carlos Indicadores</h1>
+            <h1>Ana Indicadores</h1>
         </div>
 
     </center>
@@ -131,7 +131,7 @@
                 <div class="table-responsive">
                     <p>
                         <b>Indicador N°2:</b>
-                        Porcentaje de clientes por sexo en una categoria de producto
+                        Porcentaje  total  de monto de compra por miembro, por ciudad
                     </p>
                     <div class="col-md-6">
                         <input class="form-control" type="text" name="lp" id='lp' value="" list="listaLP" onblur="obtenerCodigo('lp','listaLP','lp_id')" placeholder="seleccione una linea de producto"> <br>
@@ -157,10 +157,7 @@
                         </tbody>
                     </table>
                     </center>
-                    <p>
-                        El genero con mayor porcentaje de venta en esta linea es:
-                        <input type="text" name="genero" id="genero" value="" disabled>
-                    </p>
+                    
                 </div>
             </div>
 
@@ -168,14 +165,11 @@
                 <div class="table-responsive">
                     <p>
                         <b>Indicador N°3:</b>  
-                        ganancia de un producto comparando las ventas antes y después de un feriado
+                        Categoría de producto se vende en mayor cantidad por sexo
                     </p>
-                    <div class="col-md-3">
-                        <input class="form-control" type="date" name="fecha" id='fecha' value="" placeholder="seleccione una linea de producto"> <br>
-                        
-                    </div>
+                    
 
-                    <div class="col-md-6" style="margin-top: -100px; margin-left: 170px;">
+                    <div class="col-md-6" >
                         <input class="form-control" type="text" name="lp1" id='lp1' value="" list="listaLP1" onblur="obtenerCodigo('lp1','listaLP1','lp_id1')" placeholder="seleccione una linea de producto"> <br>
                         <input class="form-control" type="hidden" name="lp_id1" id='lp_id1' value="" >
                         <datalist id="listaLP1" >
@@ -188,7 +182,7 @@
                         </datalist>
                     </div><br>
 
-                    <div class="col-md-2" style="margin-top: -88px; margin-left: 490px;">
+                    <div class="col-md-2" style="margin-top: -88px; margin-left: 390px;">
                         <input type="button" id="button" value="buscar" onclick="indicador3()"></button>
                     </div><br>
                     
@@ -197,15 +191,18 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Linea Producto</th>
-                                    <th scope="col">Fecha</th>
-                                    <th scope="col">Ganancia</th>
+                                    <th scope="col">Sexo</th>
+                                    <th scope="col">Cantidad</th>
                                 </tr>
                             </thead>
                             <tbody id='indicador3' style="overflow-y:auto">
                             </tbody>
                         </table>
                     </div>
-
+                    <!-- <p>
+                        El tipo de pago preferido por los clientes es:
+                        <input type="text" name="linea" id="linea" value="" disabled>
+                    </p> --> 
                 </div>
             </div>
 
@@ -213,14 +210,14 @@
                 <div class="table-responsive">
                     <p>
                         <b>Indicador N°1: </b>
-                        Ganancia de un producto con relación a la cantidad vendida y su total de ganancia
+                        Nivel de Experiencia de satisfacción del cliente por ciudad
                     </p>
                     <table  class="table table-bordered table-hover table-sm table-striped">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Linea Producto</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">% ganancia</th>
+                                <th scope="col">Ciudad</th>
+                                <th scope="col">clasificacion</th>
+                               
                             </tr>
                         </thead>
                         <tbody id='indicador1' style="overflow-y:auto">
@@ -256,47 +253,43 @@
                 }
             }
 
-            if (id == "lp") {
-                indicador2(res)
-            }
+           
+            indicador2(res)
+            
             
         }
 
         async function indicador1(){
-            let ind1 = JSON.parse(await $.post("./Parametros/Carlos_indicador1.php"));
+            let ind1 = JSON.parse(await $.post("./Parametros/Ana_indicador1.php"));
             console.log(ind1)
             actualizarTablaIndicador1(ind1)
         }
 
         async function indicador2(res){
-            let ind2 = JSON.parse(await $.post("./Parametros/Carlos_indicador2.php",{id : res}));
+            console.log(res)
+            let ind2 = JSON.parse(await $.post("./Parametros/Ana_indicador2.php",{id :res }));
             console.log(ind2)
-            actualizarTablaIndicador2(ind2)
+            //actualizarTablaIndicador2(ind2)
         }
 
         async function indicador3(){
-            const fecha = document.getElementById('fecha').value 
             const lp = document.getElementById('lp_id1').value 
 
-            if (lp != '' && fecha !='') {
-                let ind3 = JSON.parse(await $.post("./Parametros/Carlos_indicador3.php",{fecha : fecha,id :lp}));
+            if (lp != '' ) {
+                let ind3 = JSON.parse(await $.post("./Parametros/Ana_indicador3.php",{id :lp}));
                 console.log(ind3)
                 actualizarTablaIndicador3(ind3)
             }else{
-                alert("debe selecionar ambos campos para la busqueda")
+                alert("debe selecionar una linea ")
             }
             
         }
 
         function actualizarTablaIndicador1(ind1){
             $("#indicador1").empty()
-            tot = 0
+           
             for (var dato of ind1) {
-               tot = parseInt(tot) + parseInt(dato.total)
-               console.log(tot)
-            }
-            for (var dato of ind1) {
-                document.getElementById("indicador1").innerHTML += "<tr><td>" + dato.linea_producto+ "</td> <td>" +dato.total+ "</td> <td>"+decimal(dato.total,tot)+"</td></td>";
+                document.getElementById("indicador1").innerHTML += "<tr><td>" + dato.nombre+ "</td> <td>" +dato.clasificacion+"</td></td>";
             }
            
         }
@@ -304,17 +297,17 @@
         function actualizarTablaIndicador2(ind2){
             $("#indicador2").empty()
             pos = 0
-            mayor = ind2[0].genero
+            mayor = ind2[0].cantidadLP
             indice = pos
-            tot1 = 0
+            tot1 = 0 
             for (var dato of ind2) {
-               tot1 = parseInt(tot1) + parseInt(dato.genero)
+               tot1 = parseInt(tot1) + parseInt(dato.cantidadLP)
             }
       
             for (var dato of ind2) {
                 document.getElementById("indicador2").innerHTML += "<tr><td>" + dato.linea_producto+ "</td> <td>" 
-                + dato.nombre+ "</td> <td>"+ decimal(dato.genero,tot1)+"</td></td>";
-                if (mayor < dato.genero) {
+                + dato.nombre+ "</td> <td>"+ dato.cantidadLP+"</td></td>";
+                if (mayor < dato.cantidadLP) {
                     indice = pos
                 }
                 pos++
@@ -333,7 +326,7 @@
    
             for (var dato of ind3) {
                 document.getElementById("indicador3").innerHTML += "<tr><td>" + dato.linea_producto+ "</td> <td>" 
-                + dato.fecha+"</td><td>" + dato.total+"</td></td>";
+                + dato.nombre+"</td><td>" + dato.cantidadLP+"</td></td>";
                
             }
         }

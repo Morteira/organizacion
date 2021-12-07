@@ -243,7 +243,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="table-responsive">
                     <p>
                         <b>Indicador N°2:</b>
@@ -252,6 +252,7 @@
                     <table  class="table table-bordered table-hover table-sm table-striped">
                         <thead class="thead-dark">
                             <tr>
+                                <th scope="col">Tipo cliente</th>
                                 <th scope="col">Tipo pago</th>
                                 <th scope="col">Porcentaje</th>
                             </tr>
@@ -260,10 +261,10 @@
                         </tbody>
                     </table>
                     </center>
-                    <p>
+                   <!--  <p>
                         El tipo de pago preferido por los clientes es:
                         <input type="text" name="mayor" id="mayor" value="" disabled>
-                    </p>
+                    </p> -->
                 </div>
             </div>
            
@@ -313,7 +314,7 @@
             mayor = ind2[0].cantidadTp
             indice = pos
             for (var dato of ind2) {
-                document.getElementById("indicador2").innerHTML += "<tr><td>" + dato.tipo_pago+ "</td> <td>" 
+                document.getElementById("indicador2").innerHTML += "<tr><td>" +dato.tipo_cliente + "</td> <td>"+dato.tipo_pago+ "</td> <td>" 
                 + dato.cantidadTp+"</td></td>";
                 if (mayor < dato.cantidadTp) {
                     indice = pos
@@ -321,7 +322,7 @@
                 pos++
             }
 
-            document.getElementById("mayor").value = ind2[indice].tipo_pago
+            //document.getElementById("mayor").value = ind2[indice].tipo_pago
         }
 
         function actualizarTablaIndicador3(ind3){
