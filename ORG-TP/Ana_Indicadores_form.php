@@ -112,7 +112,7 @@
                     <li><a href="./inde.php">Home</a></li>
                     <li><a href="./ventas.php"></i>Ventas</a></li>
                     <li><a href="./Ale_Indicadores_form.php"></i>Ale</a></li>
-                     <li><a href="./Ana_Indicadores_form.php"></i>Ana</a></li>
+                     <li><a href="./Carlos_Indicadores_form.php"></i>Carlos</a></li>
   
                 </ul>
             </nav>
