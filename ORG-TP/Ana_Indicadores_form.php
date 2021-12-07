@@ -133,23 +133,12 @@
                         <b>Indicador N°2:</b>
                         Porcentaje  total  de monto de compra por miembro, por ciudad
                     </p>
-                    <div class="col-md-6">
-                        <input class="form-control" type="text" name="lp" id='lp' value="" list="listaLP" onblur="obtenerCodigo('lp','listaLP','lp_id')" placeholder="seleccione una linea de producto"> <br>
-                        <input class="form-control" type="hidden" name="lp_id" id='lp_id' value="" >
-                        <datalist id="listaLP" >
-                            <?php
-                                $con=$consulta->consultarDatos(['linea_producto','id'], 'lineaproducto');
-                                foreach($con as $recor){
-                                    echo "<option value='".$recor[0]."'>".$recor[1]."</option>";
-                                }
-                            ?>
-                        </datalist>
-                    </div>
+                   
                     <table  class="table table-bordered table-hover table-sm table-striped">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">Linea Producto</th>
-                                <th scope="col">Genero</th>
+                                <th scope="col">Ciudad</th>
+                                <th scope="col">Total</th>
                                 <th scope="col">Porcentaje</th>
                             </tr>
                         </thead>
@@ -268,9 +257,9 @@
 
         async function indicador2(){
            
-            let ind2 = JSON.parse(await $.post("./Parametros/Ana_indicador2.php"));
-            console.log(ind2)
-            //actualizarTablaIndicador2(ind2)
+            let ind2 = JSON.parse(await $.post("./Parametros/Ana_inidicador2.php"));
+            console.log(ind2,2)
+            actualizarTablaIndicador2(ind2)
         }
 
         async function indicador3(){
@@ -297,23 +286,13 @@
 
         function actualizarTablaIndicador2(ind2){
             $("#indicador2").empty()
-            pos = 0
-            mayor = ind2[0].cantidadLP
-            indice = pos
-            tot1 = 0 
+   
             for (var dato of ind2) {
-               tot1 = parseInt(tot1) + parseInt(dato.cantidadLP)
+                document.getElementById("indicador2").innerHTML += "<tr><td>" + dato.nombre+ "</td> <td>" 
+                + dato.total+ "</td> <td>"+ dato.porcentaje+"</td></td>";
+                
             }
-      
-            for (var dato of ind2) {
-                document.getElementById("indicador2").innerHTML += "<tr><td>" + dato.linea_producto+ "</td> <td>" 
-                + dato.nombre+ "</td> <td>"+ dato.cantidadLP+"</td></td>";
-                if (mayor < dato.cantidadLP) {
-                    indice = pos
-                }
-                pos++
-            }
-            document.getElementById("genero").value = ind2[indice].nombre
+          
         }
 
         function decimal(cant,tot3){

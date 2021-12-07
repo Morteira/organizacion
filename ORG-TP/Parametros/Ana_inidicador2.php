@@ -7,7 +7,7 @@
  
     SELECT
        ciudad as nombre, total,
-       CONCAT( round( ( (total/"'.$tot[0][0].'" ) * 100 ) ,2) ,'%')  AS porcentaje
+       CONCAT( round( ( (total/"'.$tot[0][0].'" ) * 100 ) ,2) ,"%")  AS porcentaje
       FROM ventas v
       join ciudad c on v.ciudad_id = c.id
       join tipocliente tc on v.tipoCliente_id = tc.id
